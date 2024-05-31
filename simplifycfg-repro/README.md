@@ -1,6 +1,7 @@
 # GEP Rewrite causes simplifycfg bailout
 
-This code exhibits a problem with LLVM commmit:
+This code exhibits a problem with LLVM commmit
+https://github.com/llvm/llvm-project/commit/e13bed4c5f3544c076ce57e36d9a11eefa5a7815:
 
 ```
 commit e13bed4c5f3544c076ce57e36d9a11eefa5a7815
@@ -9,6 +10,7 @@ Date:   Fri Oct 6 11:15:00 2023 +0100
 
     [PATCH] [llvm] [InstCombine] Canonicalise ADD+GEP
 ```
+
 This is a cut-down version of one of the FFT kernels for which the GEP
 commit causes `simplifycfg` to bail out and thus results in a
 large increase of VGPR usage by the amdgpu backend.
@@ -32,10 +34,10 @@ simplifycfg tunable value raised to 4.  The CFG is the same as without
 GEP.
 - `llccmd.sh` will compile the optimized bitcode to amdgpu assembly. It
 isn't very interesting for this example.
-- `LLVMBitcode.bc` is the original bitcode for the kernel. You can
+- `LLVMBitcode.bc` and `LLVMBitcode.ll` is the original bitcode for the kernel. You can
 compile it to assembly with the various options and see the greatly
 increased register usage when simplifycfg fails.
 
-I used a very recent trunk (0d37e5c61797d6075f02daf28d1b16561299bc69) for this,
-just applying the patches and building
-with amdgpu (and assertions) enabled.
+I used a very recent trunk
+(http://github.com/llvm/llvm-project/commit/0d37e5c61797d6075f02daf28d1b16561299bc69)
+for this, just applying the patches and building with amdgpu (and assertions) enabled.
