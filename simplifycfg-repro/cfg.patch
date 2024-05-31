@@ -1,0 +1,25 @@
+diff --git a/llvm/lib/Transforms/Utils/SimplifyCFG.cpp b/llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+index 93701b2a7791..ca0fa7ad6835 100644
+--- a/llvm/lib/Transforms/Utils/SimplifyCFG.cpp
++++ b/llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+@@ -113,6 +113,11 @@ static cl::opt<unsigned> TwoEntryPHINodeFoldingThreshold(
+              "to speculatively execute to fold a 2-entry PHI node into a "
+              "select (default = 4)"));
+ 
++static cl::opt<unsigned> NumPHIdInstsThreshold(
++    "num-phid-insts-threshold", cl::Hidden, cl::init(1),
++    cl::desc("Maximum number of extra PHI nodes allowed when sinking "
++             "instructions (default = 1)"));
++
+ static cl::opt<bool>
+     HoistCommon("simplifycfg-hoist-common", cl::Hidden, cl::init(true),
+                 cl::desc("Hoist common instructions up to the parent block"));
+@@ -2350,7 +2355,7 @@ static bool SinkCommonCodeFromPredecessors(BasicBlock *BB,
+       if ((NumPHIdValues % UnconditionalPreds.size()) != 0)
+         NumPHIInsts++;
+ 
+-      return NumPHIInsts <= 1;
++      return NumPHIInsts <= NumPHIdInstsThreshold;
+     };
+ 
+     // We've determined that we are going to sink last ScanIdx instructions,

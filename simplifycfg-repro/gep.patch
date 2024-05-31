@@ -1,0 +1,107 @@
+diff --git a/llvm/lib/Transforms/InstCombine/InstructionCombining.cpp b/llvm/lib/Transforms/InstCombine/InstructionCombining.cpp
+index 6c25ff215c37..ef2a484bfd21 100644
+--- a/llvm/lib/Transforms/InstCombine/InstructionCombining.cpp
++++ b/llvm/lib/Transforms/InstCombine/InstructionCombining.cpp
+@@ -152,6 +152,11 @@ MaxArraySize("instcombine-maxarray-size", cl::init(1024),
+ static cl::opt<unsigned> ShouldLowerDbgDeclare("instcombine-lower-dbg-declare",
+                                                cl::Hidden, cl::init(true));
+ 
++static cl::opt<bool>
++EnableGEPAddRewrite("instcombine-enable-gep-add-rewrite",
++  cl::desc("Enable ADD+GEP to GEP+GEP rewrite (default true)"),
++  cl::Hidden, cl::init(true));
++
+ std::optional<Instruction *>
+ InstCombiner::targetInstCombineIntrinsic(IntrinsicInst &II) {
+   // Handle target specific intrinsics
+@@ -2964,46 +2969,50 @@ Instruction *InstCombinerImpl::visitGetElementPtrInst(GetElementPtrInst &GEP) {
+              isKnownNonNegative(Idx2, Q);
+     };
+ 
+-    // Try to replace ADD + GEP with GEP + GEP.
+-    Value *Idx1, *Idx2;
+-    if (match(GEP.getOperand(1),
+-              m_OneUse(m_Add(m_Value(Idx1), m_Value(Idx2))))) {
+-      //   %idx = add i64 %idx1, %idx2
+-      //   %gep = getelementptr i32, ptr %ptr, i64 %idx
+-      // as:
+-      //   %newptr = getelementptr i32, ptr %ptr, i64 %idx1
+-      //   %newgep = getelementptr i32, ptr %newptr, i64 %idx2
+-      bool IsInBounds = CanPreserveInBounds(
+-          cast<OverflowingBinaryOperator>(GEP.getOperand(1))->hasNoSignedWrap(),
+-          Idx1, Idx2);
+-      auto *NewPtr =
+-          Builder.CreateGEP(GEP.getResultElementType(), GEP.getPointerOperand(),
+-                            Idx1, "", IsInBounds);
+-      return replaceInstUsesWith(
+-          GEP, Builder.CreateGEP(GEP.getResultElementType(), NewPtr, Idx2, "",
+-                                 IsInBounds));
+-    }
+-    ConstantInt *C;
+-    if (match(GEP.getOperand(1), m_OneUse(m_SExtLike(m_OneUse(m_NSWAdd(
+-                                     m_Value(Idx1), m_ConstantInt(C))))))) {
+-      // %add = add nsw i32 %idx1, idx2
+-      // %sidx = sext i32 %add to i64
+-      // %gep = getelementptr i32, ptr %ptr, i64 %sidx
+-      // as:
+-      // %newptr = getelementptr i32, ptr %ptr, i32 %idx1
+-      // %newgep = getelementptr i32, ptr %newptr, i32 idx2
+-      bool IsInBounds = CanPreserveInBounds(
+-          /*IsNSW=*/true, Idx1, C);
+-      auto *NewPtr = Builder.CreateGEP(
+-          GEP.getResultElementType(), GEP.getPointerOperand(),
+-          Builder.CreateSExt(Idx1, GEP.getOperand(1)->getType()), "",
+-          IsInBounds);
+-      return replaceInstUsesWith(
+-          GEP,
+-          Builder.CreateGEP(GEP.getResultElementType(), NewPtr,
+-                            Builder.CreateSExt(C, GEP.getOperand(1)->getType()),
+-                            "", IsInBounds));
+-    }
++    if (EnableGEPAddRewrite) {
++      // Try to replace ADD + GEP with GEP + GEP.
++      Value *Idx1, *Idx2;
++      if (match(GEP.getOperand(1),
++                m_OneUse(m_Add(m_Value(Idx1), m_Value(Idx2))))) {
++        //   %idx = add i64 %idx1, %idx2
++        //   %gep = getelementptr i32, ptr %ptr, i64 %idx
++        // as:
++        //   %newptr = getelementptr i32, ptr %ptr, i64 %idx1
++        //   %newgep = getelementptr i32, ptr %newptr, i64 %idx2
++        LLVM_DEBUG(dbgs() << "ADD+GEP: " << GEP << '\n');
++        bool IsInBounds = CanPreserveInBounds(
++            cast<OverflowingBinaryOperator>(GEP.getOperand(1))->hasNoSignedWrap(),
++            Idx1, Idx2);
++        auto *NewPtr =
++            Builder.CreateGEP(GEP.getResultElementType(), GEP.getPointerOperand(),
++                              Idx1, "", IsInBounds);
++        return replaceInstUsesWith(
++            GEP, Builder.CreateGEP(GEP.getResultElementType(), NewPtr, Idx2, "",
++                                   IsInBounds));
++      }
++      ConstantInt *C;
++      if (match(GEP.getOperand(1), m_OneUse(m_SExtLike(m_OneUse(m_NSWAdd(
++                                       m_Value(Idx1), m_ConstantInt(C))))))) {
++        // %add = add nsw i32 %idx1, idx2
++        // %sidx = sext i32 %add to i64
++        // %gep = getelementptr i32, ptr %ptr, i64 %sidx
++        // as:
++        // %newptr = getelementptr i32, ptr %ptr, i32 %idx1
++        // %newgep = getelementptr i32, ptr %newptr, i32 idx2
++        bool IsInBounds = CanPreserveInBounds(
++            /*IsNSW=*/true, Idx1, C);
++        LLVM_DEBUG(dbgs() << "ADD+SEXT+GEP: " << GEP << '\n');
++        auto *NewPtr = Builder.CreateGEP(
++            GEP.getResultElementType(), GEP.getPointerOperand(),
++            Builder.CreateSExt(Idx1, GEP.getOperand(1)->getType()), "",
++            IsInBounds);
++        return replaceInstUsesWith(
++            GEP,
++            Builder.CreateGEP(GEP.getResultElementType(), NewPtr,
++                              Builder.CreateSExt(C, GEP.getOperand(1)->getType()),
++                              "", IsInBounds));
++        }
++      }
+   }
+ 
+   if (!GEP.isInBounds()) {
