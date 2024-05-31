@@ -37,7 +37,13 @@ isn't very interesting for this example.
 - `LLVMBitcode.bc` and `LLVMBitcode.ll` is the original bitcode for the kernel. You can
 compile it to assembly with the various options and see the greatly
 increased register usage when simplifycfg fails.
+- `kernel-gep.bc`, `kernel-gep.s`, `kernel-gep-phi4.bc`, `kernel-gep-phi4.s`, `kernel-nogep.bc`,
+and `kernel-nogep.s are the results of running `optkernel-gep.sh`, `optkernel-gep-phi4.sh`, 
+and `optkernel-nogep.sh` plus `llccmd.sh` on the real kernel code in `LLVMBitcode.bc`.
+You can grep for the strings "Occupancy", "VGPR", and "SGPR" to see the register usage
+and occupancy.
 
 I used a very recent trunk
 (http://github.com/llvm/llvm-project/commit/0d37e5c61797d6075f02daf28d1b16561299bc69)
 for this, just applying the patches and building with amdgpu (and assertions) enabled.
+
