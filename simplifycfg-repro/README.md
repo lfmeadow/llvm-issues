@@ -32,6 +32,10 @@ without and with the GEP rewrite. The missed simplification is clear.
 - `opt-extra-true-phid4.ll` is the result with GEP enabled and with the
 simplifycfg tunable value raised to 4.  The CFG is the same as without
 GEP.
+- `opt-extract-false.log`, `opt-extract-true.log`, and `opt-extract-true-phid4.log`
+have the debug information from the simplifycfg pass. `opt-extract-true.log` corresponds
+to the current trunk. You can see that simplifycfg bails out thinking that 4 PHI nodes
+will be created (even though they aren't actually created).
 - `llccmd.sh` will compile the optimized bitcode to amdgpu assembly. It
 isn't very interesting for this example.
 - `LLVMBitcode.bc` and `LLVMBitcode.ll` is the original bitcode for the kernel. You can

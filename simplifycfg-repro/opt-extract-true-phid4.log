@@ -1,0 +1,325 @@
+Condition   %cond = select i1 %cmp62, i1 false, i1 true in if.end has value i1 false in predecessors:
+  entry
+Threading to destination if.then223.
+Condition   %cond = select i1 %cmp62, i1 false, i1 true in if.end607 has value i1 false in predecessors:
+  mylabel
+Threading to destination if.then609.
+SINK: instruction can be sunk:   store double %R.sroa.84.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i611, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i611 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i610, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.79.0, ptr addrspace(1) %arrayidx.i610, align 8, !tbaa !15
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Splitting edge
+SINK: Sink:   store double %R.sroa.84.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i611, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i611 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i610, i64 8
+SINK: Sink:   store double %R.sroa.79.0, ptr addrspace(1) %arrayidx.i610, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i634 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul828
+SINK: instruction can be sunk:   %mul828 = mul i64 %0, %conv827
+SINK: instruction can be sunk:   %conv827 = zext nneg i32 %add826 to i64
+SINK: instruction can be sunk:   %add826 = add nuw nsw i32 %add807, 84
+SINK: instruction can be sunk:   store double %R.sroa.77.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i633, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i633 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i632, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.72.0, ptr addrspace(1) %arrayidx.i632, align 8, !tbaa !15
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i634 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul828
+SINK: Sink:   %mul828 = mul i64 %0, %conv827
+SINK: Sink:   %conv827 = zext nneg i32 %add826 to i64
+SINK: Sink:   %add826 = add nuw nsw i32 %add807, 84
+SINK: Sink:   store double %R.sroa.77.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i633, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i633 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i632, i64 8
+SINK: Sink:   store double %R.sroa.72.0, ptr addrspace(1) %arrayidx.i632, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i632 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul810
+SINK: instruction can be sunk:   %mul810 = mul i64 %0, %conv809
+SINK: instruction can be sunk:   %conv809 = zext nneg i32 %add807 to i64
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i632 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul810
+SINK: Sink:   %mul810 = mul i64 %0, %conv809
+SINK: Sink:   %conv809 = zext nneg i32 %add807 to i64
+SINK: instruction can be sunk:   %add807 = add nuw nsw i32 %add801, %div64.zext
+SINK: instruction can be sunk:   %add801 = select i1 %.cmp62, i32 70, i32 154
+SINK: instruction can be sunk:   %.cmp62 = icmp ult i32 %5, 168
+SINK: instruction can be sunk:   store double %R.sroa.70.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i631, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i631 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i630, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.65.0, ptr addrspace(1) %arrayidx.i630, align 8, !tbaa !15
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %add807 = add nuw nsw i32 %add801, %div64.zext
+SINK: Sink:   %add801 = select i1 %.cmp62, i32 70, i32 154
+SINK: Sink:   %.cmp62 = icmp ult i32 %5, 168
+SINK: Sink:   store double %R.sroa.70.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i631, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i631 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i630, i64 8
+SINK: Sink:   store double %R.sroa.65.0, ptr addrspace(1) %arrayidx.i630, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i630 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul792
+SINK: instruction can be sunk:   %mul792 = mul i64 %0, %conv791
+SINK: instruction can be sunk:   %conv791 = zext nneg i32 %add790 to i64
+SINK: instruction can be sunk:   %add790 = add nuw nsw i32 %add771, 84
+SINK: instruction can be sunk:   store double %R.sroa.63.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i629, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i629 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i628, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.58.0, ptr addrspace(1) %arrayidx.i628, align 8, !tbaa !15
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i630 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul792
+SINK: Sink:   %mul792 = mul i64 %0, %conv791
+SINK: Sink:   %conv791 = zext nneg i32 %add790 to i64
+SINK: Sink:   %add790 = add nuw nsw i32 %add771, 84
+SINK: Sink:   store double %R.sroa.63.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i629, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i629 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i628, i64 8
+SINK: Sink:   store double %R.sroa.58.0, ptr addrspace(1) %arrayidx.i628, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i628 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul774
+SINK: instruction can be sunk:   %mul774 = mul i64 %0, %conv773
+SINK: instruction can be sunk:   %conv773 = zext nneg i32 %add771 to i64
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i628 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul774
+SINK: Sink:   %mul774 = mul i64 %0, %conv773
+SINK: Sink:   %conv773 = zext nneg i32 %add771 to i64
+SINK: instruction can be sunk:   %add771 = add nuw nsw i32 %add765, %div64.zext
+SINK: instruction can be sunk:   %add765 = select i1 %.cmp60, i32 56, i32 140
+SINK: instruction can be sunk:   %.cmp60 = icmp ult i32 %5, 336
+SINK: instruction can be sunk:   store double %R.sroa.56.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i627, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i627 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i626, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.51.0, ptr addrspace(1) %arrayidx.i626, align 8, !tbaa !15
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %add771 = add nuw nsw i32 %add765, %div64.zext
+SINK: Sink:   %add765 = select i1 %.cmp60, i32 56, i32 140
+SINK: Sink:   %.cmp60 = icmp ult i32 %5, 336
+SINK: Sink:   store double %R.sroa.56.0, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i627, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i627 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i626, i64 8
+SINK: Sink:   store double %R.sroa.51.0, ptr addrspace(1) %arrayidx.i626, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i626 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul756
+SINK: instruction can be sunk:   %mul756 = mul i64 %0, %conv755
+SINK: instruction can be sunk:   %conv755 = zext nneg i32 %add754 to i64
+SINK: instruction can be sunk:   %add754 = add nuw nsw i32 %add735, 84
+SINK: instruction can be sunk:   store double %R.sroa.49.96.copyload27, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i625, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i625 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i624, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.44.96.copyload25, ptr addrspace(1) %arrayidx.i624, align 8, !tbaa !15
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i626 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul756
+SINK: Sink:   %mul756 = mul i64 %0, %conv755
+SINK: Sink:   %conv755 = zext nneg i32 %add754 to i64
+SINK: Sink:   %add754 = add nuw nsw i32 %add735, 84
+SINK: Sink:   store double %R.sroa.49.96.copyload27, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i625, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i625 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i624, i64 8
+SINK: Sink:   store double %R.sroa.44.96.copyload25, ptr addrspace(1) %arrayidx.i624, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i624 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul738
+SINK: instruction can be sunk:   %mul738 = mul i64 %0, %conv737
+SINK: instruction can be sunk:   %conv737 = zext nneg i32 %add735 to i64
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i624 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul738
+SINK: Sink:   %mul738 = mul i64 %0, %conv737
+SINK: Sink:   %conv737 = zext nneg i32 %add735 to i64
+SINK: instruction can be sunk:   %add735 = add nuw nsw i32 %add729, %div64.zext
+SINK: instruction can be sunk:   %add729 = select i1 %.cmp58, i32 42, i32 126
+SINK: instruction can be sunk:   %.cmp58 = icmp ult i32 %5, 504
+SINK: instruction can be sunk:   store double %R.sroa.42.80.copyload23, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i623, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i623 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i622, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.37.80.copyload21, ptr addrspace(1) %arrayidx.i622, align 8, !tbaa !15
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %add735 = add nuw nsw i32 %add729, %div64.zext
+SINK: Sink:   %add729 = select i1 %.cmp58, i32 42, i32 126
+SINK: Sink:   %.cmp58 = icmp ult i32 %5, 504
+SINK: Sink:   store double %R.sroa.42.80.copyload23, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i623, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i623 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i622, i64 8
+SINK: Sink:   store double %R.sroa.37.80.copyload21, ptr addrspace(1) %arrayidx.i622, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i622 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul720
+SINK: instruction can be sunk:   %mul720 = mul i64 %0, %conv719
+SINK: instruction can be sunk:   %conv719 = zext nneg i32 %add718 to i64
+SINK: instruction can be sunk:   %add718 = add nuw nsw i32 %add699, 84
+SINK: instruction can be sunk:   store double %R.sroa.35.64.copyload19, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i621, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i621 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i620, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.30.64.copyload17, ptr addrspace(1) %arrayidx.i620, align 8, !tbaa !15
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i622 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul720
+SINK: Sink:   %mul720 = mul i64 %0, %conv719
+SINK: Sink:   %conv719 = zext nneg i32 %add718 to i64
+SINK: Sink:   %add718 = add nuw nsw i32 %add699, 84
+SINK: Sink:   store double %R.sroa.35.64.copyload19, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i621, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i621 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i620, i64 8
+SINK: Sink:   store double %R.sroa.30.64.copyload17, ptr addrspace(1) %arrayidx.i620, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i620 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul702
+SINK: instruction can be sunk:   %mul702 = mul i64 %0, %conv701
+SINK: instruction can be sunk:   %conv701 = zext nneg i32 %add699 to i64
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i620 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul702
+SINK: Sink:   %mul702 = mul i64 %0, %conv701
+SINK: Sink:   %conv701 = zext nneg i32 %add699 to i64
+SINK: instruction can be sunk:   %add699 = add nuw nsw i32 %add693, %div64.zext
+SINK: instruction can be sunk:   %add693 = select i1 %.cmp56, i32 28, i32 112
+SINK: instruction can be sunk:   %.cmp56 = icmp ult i32 %5, 672
+SINK: instruction can be sunk:   store double %R.sroa.28.48.copyload15, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i619, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i619 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i618, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.23.48.copyload13, ptr addrspace(1) %arrayidx.i618, align 8, !tbaa !15
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %add699 = add nuw nsw i32 %add693, %div64.zext
+SINK: Sink:   %add693 = select i1 %.cmp56, i32 28, i32 112
+SINK: Sink:   %.cmp56 = icmp ult i32 %5, 672
+SINK: Sink:   store double %R.sroa.28.48.copyload15, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i619, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i619 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i618, i64 8
+SINK: Sink:   store double %R.sroa.23.48.copyload13, ptr addrspace(1) %arrayidx.i618, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i618 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul684
+SINK: instruction can be sunk:   %mul684 = mul i64 %0, %conv683
+SINK: instruction can be sunk:   %conv683 = zext nneg i32 %add682 to i64
+SINK: instruction can be sunk:   %add682 = add nuw nsw i32 %add663, 84
+SINK: instruction can be sunk:   store double %R.sroa.21.32.copyload11, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i617, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i617 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i616, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.16.32.copyload9, ptr addrspace(1) %arrayidx.i616, align 8, !tbaa !15
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i618 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul684
+SINK: Sink:   %mul684 = mul i64 %0, %conv683
+SINK: Sink:   %conv683 = zext nneg i32 %add682 to i64
+SINK: Sink:   %add682 = add nuw nsw i32 %add663, 84
+SINK: Sink:   store double %R.sroa.21.32.copyload11, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i617, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i617 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i616, i64 8
+SINK: Sink:   store double %R.sroa.16.32.copyload9, ptr addrspace(1) %arrayidx.i616, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i616 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul666
+SINK: instruction can be sunk:   %mul666 = mul i64 %0, %conv665
+SINK: instruction can be sunk:   %conv665 = zext nneg i32 %add663 to i64
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i616 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %39, i64 %mul666
+SINK: Sink:   %mul666 = mul i64 %0, %conv665
+SINK: Sink:   %conv665 = zext nneg i32 %add663 to i64
+SINK: instruction can be sunk:   %add663 = add nuw nsw i32 %add91.i, %40
+SINK: instruction can be sunk:   %40 = select i1 %.cmp, i32 0, i32 84
+SINK: instruction can be sunk:   %.cmp = icmp ult i32 %5, 840
+SINK: instruction can be sunk:   store double %R.sroa.14.16.copyload7, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i615, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i615 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i614, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.9.16.copyload5, ptr addrspace(1) %arrayidx.i614, align 8, !tbaa !15
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %add663 = add nuw nsw i32 %add91.i, %40
+SINK: Sink:   %40 = select i1 %.cmp, i32 0, i32 84
+SINK: Sink:   %.cmp = icmp ult i32 %5, 840
+SINK: Sink:   store double %R.sroa.14.16.copyload7, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i615, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i615 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i614, i64 8
+SINK: Sink:   store double %R.sroa.9.16.copyload5, ptr addrspace(1) %arrayidx.i614, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i614 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %38, i64 %mul648
+SINK: instruction can be sunk:   %mul648 = mul i64 %0, %conv647
+SINK: instruction can be sunk:   %conv647 = zext nneg i32 %add646 to i64
+SINK: instruction can be sunk:   %add646 = add nuw nsw i32 %add627, 84
+SINK: instruction can be sunk:   store double %R.sroa.7.0.copyload3, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i613, align 8, !tbaa !15
+SINK: instruction can be sunk:   %element.sroa.2.0.arrayidx.sroa_idx.i613 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i612, i64 8
+SINK: instruction can be sunk:   store double %R.sroa.0.0.copyload1, ptr addrspace(1) %arrayidx.i612, align 8, !tbaa !15
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: #phid values: 2
+SINK: Sink:   %arrayidx.i614 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %38, i64 %mul648
+SINK: Sink:   %mul648 = mul i64 %0, %conv647
+SINK: Sink:   %conv647 = zext nneg i32 %add646 to i64
+SINK: Sink:   %add646 = add nuw nsw i32 %add627, 84
+SINK: Sink:   store double %R.sroa.7.0.copyload3, ptr addrspace(1) %element.sroa.2.0.arrayidx.sroa_idx.i613, align 8, !tbaa !15
+SINK: Sink:   %element.sroa.2.0.arrayidx.sroa_idx.i613 = getelementptr inbounds i8, ptr addrspace(1) %arrayidx.i612, i64 8
+SINK: Sink:   store double %R.sroa.0.0.copyload1, ptr addrspace(1) %arrayidx.i612, align 8, !tbaa !15
+SINK: instruction can be sunk:   %arrayidx.i612 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %38, i64 %mul630
+SINK: #phid values: 4
+SINK: Sink:   %arrayidx.i612 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %38, i64 %mul630
+SINK: instruction can be sunk:   %38 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %37, i64 %mul618
+SINK: instruction can be sunk:   %37 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %buf_out.coerce, i64 %add49
+SINK: instruction can be sunk:   %mul630 = mul i64 %0, %conv629
+SINK: instruction can be sunk:   %conv629 = zext nneg i32 %add627 to i64
+SINK: #phid values: 2
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 2
+SINK: Sink:   %38 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %37, i64 %mul618
+SINK: Sink:   %36 = getelementptr %struct.rocfft_complex, ptr addrspace(1) %buf_out.coerce, i64 %add49
+SINK: Sink:   %mul630 = mul i64 %0, %conv629
+SINK: Sink:   %conv629 = zext nneg i32 %add627 to i64
+SINK: instruction can be sunk:   %add627 = add nuw nsw i32 %rem626, %mul623
+SINK: instruction can be sunk:   %rem626 = select i1 %rem626.cmp, i32 %div64.zext, i32 %rem626.urem
+SINK: instruction can be sunk:   %rem626.cmp = icmp ult i32 %5, 1008
+SINK: instruction can be sunk:   %rem626.urem = add nsw i32 %div64.zext, -84
+SINK: instruction can be sunk:   %mul623 = select i1 %div622.cmp, i32 168, i32 0
+SINK: instruction can be sunk:   %div622.cmp = icmp ugt i32 %5, 1007
+SINK: instruction can be sunk:   %mul618 = mul i64 %3, %conv53
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: #phid values: 0
+SINK: Sink:   %add627 = add nuw nsw i32 %rem626, %mul623
+SINK: Sink:   %rem626 = select i1 %rem626.cmp, i32 %div64.zext, i32 %rem626.urem
+SINK: Sink:   %rem626.cmp = icmp ult i32 %5, 1008
+SINK: Sink:   %rem626.urem = add nsw i32 %div64.zext, -84
+SINK: Sink:   %mul623 = select i1 %div622.cmp, i32 168, i32 0
+SINK: Sink:   %div622.cmp = icmp ugt i32 %5, 1007
+SINK: Sink:   %mul618 = mul i64 %3, %conv53
+FOLDING BRANCH TO COMMON DEST:
+  br i1 %cmp62.not, label %if.then609, label %if.end833.sink.split
+if.then609:                                       ; preds = %mylabel
+  %add612 = add nuw nsw i64 %mul, %conv53
+  %cmp614 = icmp ult i64 %add612, %1
+  br i1 %cmp614, label %if.end833.sink.split, label %if.end833
+Removing BB: 
+
+if.then609:                                       ; No predecessors!
+  %add612.old = add nuw nsw i64 %mul, %conv53
+  %cmp614.old = icmp ult i64 %add612.old, %1
+  br i1 %cmp614.old, label %if.end833.sink.split, label %if.end833

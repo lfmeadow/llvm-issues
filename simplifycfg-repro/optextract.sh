@@ -11,9 +11,9 @@ opt --mtriple amdgcn-amd-amdhsa \
 --verify-each \
 --verify-region-info \
 -instcombine-enable-gep-add-rewrite=$1 \
--num-phid-insts-threshold=4 \
+-num-phid-insts-threshold=1 \
 --debug-only=simplifycfg \
--o opt-extract-$1-phid4.bc \
+-o opt-extract-$1.bc \
 extract.ll
 
 #--print-after-all \
