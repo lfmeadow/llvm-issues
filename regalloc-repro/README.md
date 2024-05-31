@@ -21,3 +21,7 @@ The files are:
 - `optcmd-trunk.sh` runs the optimizer with the same options used by the HIP compiler
 - `opt-gepoff.bc` is the optimized bitcode with the GEP commit disabled
 - `opt-gepon.bc` is the optimized bitcode with the GEP commit enabled
+- The corresponding `.ll` files are included for convenience
+
+A very recent trunk commit was used, the patches should apply cleanly and the results should be the
+same as included here.
