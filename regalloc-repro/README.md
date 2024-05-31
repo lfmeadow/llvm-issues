@@ -1,6 +1,6 @@
 # GEP rewrite increases amdgpu VGPR usage
 
-This code exhibits a problem with LLVM commit https://github.com/llvm/llvm-project/e13bed4c5f3544c076ce57e36d9a11eefa5a7815:
+This code exhibits a problem with LLVM commit https://github.com/llvm/llvm-project/commit/e13bed4c5f3544c076ce57e36d9a11eefa5a7815:
 
 ```
 commit e13bed4c5f3544c076ce57e36d9a11eefa5a7815
