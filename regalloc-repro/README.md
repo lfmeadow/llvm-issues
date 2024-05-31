@@ -22,6 +22,9 @@ The files are:
 - `opt-gepoff.bc` is the optimized bitcode with the GEP commit disabled
 - `opt-gepon.bc` is the optimized bitcode with the GEP commit enabled
 - The corresponding `.ll` files are included for convenience
+- `opt-gepoff.s` and `opt-gepon.s` contain the assembly generated from the optimized bitcode with the
+GEP rewrite disabled and enabled, respectively. You can grep for VGPR to see that the GEP-enabled
+version uses 70 VGPRs vs. 50 VGPRS, reducing the occupancy from 4 to 3.
 
 A very recent trunk commit was used, the patches should apply cleanly and the results should be the
 same as included here.
